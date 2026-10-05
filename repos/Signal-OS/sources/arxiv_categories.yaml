@@ -1,0 +1,41 @@
+categories:
+  - id: "cs.AI"
+    name: "Artificial Intelligence"
+    category: "frontier_intelligence"
+    priority: 1
+
+  - id: "cs.LG"
+    name: "Machine Learning"
+    category: "frontier_intelligence"
+    priority: 1
+
+  - id: "cs.CL"
+    name: "Computation and Language"
+    category: "frontier_intelligence"
+    priority: 1
+
+  - id: "cs.CV"
+    name: "Computer Vision"
+    category: "frontier_intelligence"
+    priority: 2
+
+  - id: "cs.RO"
+    name: "Robotics"
+    category: "frontier_intelligence"
+    priority: 2
+
+  - id: "q-fin.TR"
+    name: "Trading and Market Microstructure"
+    category: "financial_markets"
+    priority: 2
+
+  - id: "q-fin.PM"
+    name: "Portfolio Management"
+    category: "financial_markets"
+    priority: 2
+
+settings:
+  timeout: 15
+  max_results_per_category: 15
+  sort_by: "submittedDate"
+  sort_order: "descending"

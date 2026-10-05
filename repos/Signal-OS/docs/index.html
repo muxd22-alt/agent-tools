@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Signal Daily</title>
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#000;color:#f5f5f7;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;-webkit-font-smoothing:antialiased}
+.c{text-align:center;max-width:560px}
+.logo{width:72px;height:72px;margin:0 auto 24px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 8px 32px rgba(99,102,241,.3)}
+h1{font-size:32px;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
+.sub{font-size:15px;color:#a1a1a6;line-height:1.5;margin-bottom:32px}
+.status{display:inline-flex;align-items:center;gap:8px;background:#111;border:1px solid #222;padding:12px 20px;border-radius:16px;font-size:14px;color:#a1a1a6}
+.dot{width:8px;height:8px;border-radius:50%;background:#30d158;box-shadow:0 0 8px rgba(48,209,88,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.f{background:#111;border:1px solid #222;border-radius:12px;padding:20px 12px}
+.fi{font-size:24px;margin-bottom:8px}
+.fl{font-size:12px;color:#6e6e73;font-weight:500}
+.foot{margin-top:48px;font-size:12px;color:#6e6e73}
+.foot a{color:#2997ff;text-decoration:none}
+@media(max-width:480px){.feat{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="c">
+  <div class="logo">&#9889;</div>
+  <h1>AI Signal Daily</h1>
+  <p class="sub">AI-first tech news. Articles, images, and commentary<br>generated entirely by AI every morning at 7 AM.</p>
+  <div class="status"><span class="dot"></span>First issue deploys via GitHub Actions</div>
+  <div class="feat">
+    <div class="f"><div class="fi">&#128269;</div><div class="fl">150+ Sources Scraped</div></div>
+    <div class="f"><div class="fi">&#9999;&#65039;</div><div class="fl">AI-Written Articles</div></div>
+    <div class="f"><div class="fi">&#128172;</div><div class="fl">3 AI Perspectives</div></div>
+  </div>
+</div>
+<p class="foot">Powered by <a href="https://openrouter.ai" target="_blank">OpenRouter</a> free-tier LLMs &middot; <a href="https://github.com" target="_blank">GitHub Actions</a></p>
+</body>
+</html>

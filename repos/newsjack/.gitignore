@@ -1,0 +1,76 @@
+# ─── deps ─────────────────────────────────────────────
+node_modules/
+.pnpm-store/
+.yarn/
+
+# ─── env / secrets ────────────────────────────────────
+# Never commit anything resembling credentials. If you need an
+# example, use .env.example with placeholders only.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+*.token
+*.secret
+*.credential
+.netrc
+.npmrc
+.yarnrc
+secrets/
+private/
+credentials/
+.aws/
+
+# ─── build outputs ────────────────────────────────────
+.next/
+.vercel/
+.turbo/
+.cache/
+dist/
+out/
+build/
+coverage/
+apps/cli/newsjack
+apps/cli/newsjack.exe
+
+# ─── local client / run output ────────────────────────
+# Skill runs against a real company (AI-visibility panels, detector runs,
+# coverage trackers) write here. Client names, evidence and prompts must never
+# land in this OSS repo. Use eval/ or fixtures/ for anything shareable.
+runs/
+
+# ─── editor / os ──────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.cursor/
+.vs/
+*.swp
+*~
+
+# ─── logs ─────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ─── python generated files ───────────────────────────
+__pycache__/
+*.py[cod]
+
+# ─── runtime / pids ───────────────────────────────────
+*.pid
+*.seed
+*.pid.lock
+
+# ─── misc ─────────────────────────────────────────────
+.tmp/
+tmp/
+.claude/scheduled_tasks.lock

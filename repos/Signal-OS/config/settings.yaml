@@ -1,0 +1,54 @@
+# AI-First Tech News Site - Main Configuration
+budget:
+  total_requests: 500
+  phases:
+    scrape: 200
+    score: 50
+    write: 200
+    images: 30
+    comments: 20
+
+rate_limit:
+  requests_per_minute: 16
+  delay_between_requests: 4
+
+openrouter:
+  url: "https://openrouter.ai/api/v1/chat/completions"
+  models_url: "https://openrouter.ai/api/v1/models"
+  fallback_model: "openrouter/free"
+  max_tokens: 1500
+  temperature: 0.7
+
+articles:
+  daily_target: 15
+  styles:
+    news: 0.4
+    analysis: 0.3
+    quick_take: 0.3
+
+images:
+  enabled: true
+  style: "tech modern clean"
+  resolution: "1024x576"
+
+comments:
+  perspectives_per_article: 3
+  personas:
+    expert:
+      name: "The Expert"
+      focus: "technical deep-dive"
+    skeptic:
+      name: "The Skeptic"
+      focus: "critical analysis"
+    optimist:
+      name: "The Optimist"
+      focus: "future implications"
+
+output:
+  path: "docs/index.html"
+  format: "html"
+  theme: "dark"
+  title: "AI Signal Daily"
+
+logging:
+  level: "INFO"

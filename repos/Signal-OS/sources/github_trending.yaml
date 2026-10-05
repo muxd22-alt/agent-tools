@@ -1,0 +1,45 @@
+search_queries:
+  - query: "artificial intelligence"
+    since: "daily"
+    category: "frontier_intelligence"
+    priority: 1
+
+  - query: "machine learning"
+    since: "daily"
+    category: "frontier_intelligence"
+    priority: 1
+
+  - query: "llm"
+    since: "daily"
+    category: "frontier_intelligence"
+    priority: 1
+
+  - query: "agentic"
+    since: "daily"
+    category: "frontier_intelligence"
+    priority: 2
+
+  - query: "finance"
+    since: "daily"
+    category: "financial_markets"
+    priority: 2
+
+  - query: "trading"
+    since: "daily"
+    category: "financial_markets"
+    priority: 2
+
+  - query: "mobile"
+    since: "daily"
+    category: "mobile_infrastructure"
+    priority: 2
+
+  - query: "developer tools"
+    since: "daily"
+    category: "products_platforms"
+    priority: 2
+
+settings:
+  timeout: 10
+  max_results_per_query: 20
+  user_agent: "AI-Signal-Daily/1.0"

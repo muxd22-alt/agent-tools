@@ -1,0 +1,195 @@
+categories:
+  frontier_intelligence:
+    emoji: "🟣"
+    label: "AI & Frontier Tech"
+    color: "#8E6FE0"
+    gradient: "linear-gradient(135deg, #8E6FE0, #6366f1)"
+    weight: 1.0
+    keywords:
+      high:
+        - agi
+        - asi
+        - artificial general intelligence
+        - artificial superintelligence
+        - frontier model
+        - foundation model
+        - agentic framework
+        - autonomous agent
+        - multi-agent
+        - life extension
+        - longevity
+        - bioinformatics
+        - gene therapy
+        - protein folding
+        - synthetic biology
+        - crispr
+      medium:
+        - llm
+        - large language model
+        - reasoning model
+        - model release
+        - benchmark
+        - open source model
+        - ai research
+        - neural network
+        - genomics
+        - biotech
+        - inference
+      low:
+        - artificial intelligence
+        - chatbot
+        - machine learning
+        - robotics
+
+  saudi_global_economy:
+    emoji: "🟢"
+    label: "Saudi & Economy"
+    color: "#4C9A6A"
+    gradient: "linear-gradient(135deg, #4C9A6A, #22c55e)"
+    weight: 1.0
+    keywords:
+      high:
+        - vision 2030
+        - saudi arabia
+        - tasi
+        - sama
+        - public investment fund
+        - " pif "
+        - neom
+        - food security
+        - job displacement
+        - labor market
+        - unemployment rate
+      medium:
+        - gcc
+        - riyadh
+        - saudi economy
+        - us economy
+        - federal reserve
+        - inflation
+        - labor statistics
+        - tariffs
+        - trade policy
+        - oil price
+        - opec
+      low:
+        - economy
+        - jobs
+        - employment
+        - market
+        - stocks
+
+  financial_markets:
+    emoji: "🔵"
+    label: "Markets & Finance"
+    color: "#4A90D9"
+    gradient: "linear-gradient(135deg, #4A90D9, #3b82f6)"
+    weight: 1.0
+    keywords:
+      high:
+        - market crash
+        - stock market
+        - crypto
+        - bitcoin
+        - yield curve
+        - credit spread
+        - volatility
+        - recession
+      medium:
+        - stocks
+        - trading
+        - investment
+        - finance
+        - banking
+        - interest rates
+      low:
+        - money
+        - profit
+        - loss
+        - gain
+
+  products_platforms:
+    emoji: "🟠"
+    label: "Products & Apps"
+    color: "#E67E22"
+    gradient: "linear-gradient(135deg, #E67E22, #f97316)"
+    weight: 1.0
+    keywords:
+      high:
+        - product launch
+        - platform release
+        - saas
+        - developer tools
+        - api
+        - sdk
+        - framework
+      medium:
+        - software
+        - app
+        - tool
+        - service
+        - platform
+      low:
+        - product
+        - feature
+        - update
+
+  mobile_infrastructure:
+    emoji: "🔴"
+    label: "Mobile & Infra"
+    color: "#E74C3C"
+    gradient: "linear-gradient(135deg, #E74C3C, #ef4444)"
+    weight: 1.0
+    keywords:
+      high:
+        - mobile
+        - android
+        - ios
+        - edge computing
+        - on-device
+        - mesh networking
+        - vpn
+      medium:
+        - smartphone
+        - tablet
+        - device
+        - network
+        - cloud
+      low:
+        - phone
+        - mobile
+        - app
+
+  news_dashboards:
+    emoji: "🟡"
+    label: "News & Geopolitics"
+    color: "#F1C40F"
+    gradient: "linear-gradient(135deg, #F1C40F, #eab308)"
+    weight: 1.0
+    keywords:
+      high:
+        - geopolitics
+        - sanctions
+        - trade war
+        - intelligence
+        - osint
+        - dashboard
+      medium:
+        - news
+        - politics
+        - policy
+        - regulation
+      low:
+        - event
+        - happening
+        - update
+
+scoring:
+  keyword_weights:
+    high: 3
+    medium: 1.5
+    low: 0.5
+  recency_boost_hours: 24
+  recency_boost_points: 1.5
+  llm_review_top_n: 50
+  urgency_score_threshold: 8.0

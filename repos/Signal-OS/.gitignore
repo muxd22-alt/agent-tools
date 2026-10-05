@@ -1,0 +1,37 @@
+# Environment & Secrets — NEVER commit
+.env
+.env.local
+secrets.json
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv
+env/
+venv/
+
+# Node / JS
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Data (regenerated daily by pipeline)
+data/raw/
+data/scored/
+data/articles/
+data/images/
+*.log
+
+# Old / scratch
+system/
+github_test/
+all_promot*

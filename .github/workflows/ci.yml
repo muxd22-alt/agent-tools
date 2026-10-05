@@ -1,0 +1,88 @@
+name: CI
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Member inventory
+        run: |
+          echo "### Members" >> "$GITHUB_STEP_SUMMARY"
+          for d in repos/*/; do
+            echo "- \`$(basename "$d")\`" >> "$GITHUB_STEP_SUMMARY"
+          done
+
+      - name: Every member has a README
+        run: |
+          missing=0
+          for d in repos/*/; do
+            if ! ls "$d" | grep -ixq 'readme.*'; then
+              echo "::warning::no README in $d"
+            fi
+          done
+
+      - name: No oversized files (GitHub limit is 100 MB)
+        run: |
+          find repos -type f -size +90M -print | tee "$RUNNER_TEMP/big.txt"
+          if [ -s "$RUNNER_TEMP/big.txt" ]; then
+            echo "::error::files over 90MB found"
+            exit 1
+          fi
+
+      - name: No leaked secrets (basic scan)
+        run: |
+          if grep -rIlE '(ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16})' repos 2>/dev/null | head -20; then
+            echo "::error::possible secret material found"
+            exit 1
+          fi
+          exit 0
+
+      - name: Python syntax check
+        run: |
+          python3 - <<'PYEOF'
+          import pathlib, sys
+          bad = []
+          n = 0
+          for p in pathlib.Path("repos").rglob("*.py"):
+              if any(part in ("node_modules", ".venv", "venv") for part in p.parts):
+                  continue
+              n += 1
+              try:
+                  src = p.read_bytes()
+                  compile(src, str(p), "exec")
+              except SyntaxError as e:
+                  bad.append(f"{p}:{e.lineno} {e.msg}")
+              except ValueError:
+                  pass  # encoding declaration quirks
+          print(f"checked {n} python files")
+          for b in bad:
+              print(f"::error::{b}")
+          sys.exit(1 if bad else 0)
+          PYEOF
+
+      - name: JSON / YAML parse check
+        run: |
+          python3 - <<'PYEOF'
+          import json, pathlib, sys
+          bad, n = [], 0
+          for p in pathlib.Path("repos").rglob("*"):
+              if p.suffix.lower() == ".json" and p.is_file():
+                  n += 1
+                  try:
+                      json.loads(p.read_text(encoding="utf-8", errors="replace"))
+                  except Exception as e:
+                      bad.append(f"{p}: {e}")
+          print(f"checked {n} json files")
+          for b in bad[:50]:
+              print(f"::error::{b}")
+          sys.exit(1 if bad else 0)
+          PYEOF

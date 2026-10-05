@@ -1,0 +1,56 @@
+{
+  "company": "Clearnym",
+  "website": "https://clearnym.com",
+  "description": "Personal data removal service that finds exposed private details, coordinates opt-out requests across data brokers, and monitors for reappearing records.",
+  "topics": [
+    "data broker removal",
+    "personal data removal",
+    "people search sites",
+    "identity theft prevention",
+    "consumer privacy"
+  ],
+  "competitors": [
+    "DeleteMe",
+    "Incogni",
+    "Optery",
+    "Kanary",
+    "Aura"
+  ],
+  "search_terms": [
+    "data broker removal",
+    "personal data removal",
+    "people search sites",
+    "identity theft prevention",
+    "consumer privacy data brokers",
+    "DeleteMe data broker",
+    "Incogni data removal",
+    "Optery privacy",
+    "Kanary data broker",
+    "Aura identity theft",
+    "Aura privacy"
+  ],
+  "feed_urls": [
+    "https://www.ftc.gov/news-events/news/press-releases/rss.xml",
+    "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en"
+  ],
+  "x_news": {
+    "enabled": true
+  },
+  "x_trends": {
+    "mode": "none",
+    "woeids": [],
+    "locations": []
+  },
+  "spokespeople": [
+    "Founder or CEO with consumer privacy expertise",
+    "Privacy operations lead",
+    "Data broker opt-out specialist"
+  ],
+  "standing": [
+    "consumer privacy",
+    "data broker opt-outs",
+    "personal data exposure",
+    "people-search site removal",
+    "identity theft prevention"
+  ]
+}

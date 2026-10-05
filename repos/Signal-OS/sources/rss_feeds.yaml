@@ -1,0 +1,65 @@
+feeds:
+  - name: "TechCrunch"
+    url: "https://techcrunch.com/feed/"
+    category: "products_platforms"
+    priority: 1
+
+  - name: "The Verge"
+    url: "https://www.theverge.com/rss/index.xml"
+    category: "products_platforms"
+    priority: 1
+
+  - name: "Ars Technica"
+    url: "https://feeds.arstechnica.com/arstechnica/index"
+    category: "frontier_intelligence"
+    priority: 2
+
+  - name: "Wired"
+    url: "https://www.wired.com/feed/rss"
+    category: "frontier_intelligence"
+    priority: 2
+
+  - name: "MIT Technology Review"
+    url: "https://www.technologyreview.com/feed/"
+    category: "frontier_intelligence"
+    priority: 1
+
+  - name: "AI News"
+    url: "https://www.artificialintelligence-news.com/feed/"
+    category: "frontier_intelligence"
+    priority: 1
+
+  - name: "OpenAI Blog"
+    url: "https://openai.com/news/rss.xml"
+    category: "frontier_intelligence"
+    priority: 2
+
+  - name: "Bloomberg Tech"
+    url: "https://feeds.bloomberg.com/technology/news.rss"
+    category: "financial_markets"
+    priority: 2
+
+  - name: "Android Authority"
+    url: "https://www.androidauthority.com/feed/"
+    category: "mobile_infrastructure"
+    priority: 2
+
+  - name: "9to5Mac"
+    url: "https://9to5mac.com/feed/"
+    category: "mobile_infrastructure"
+    priority: 2
+
+  - name: "BBC Tech"
+    url: "http://feeds.bbci.co.uk/news/technology/rss.xml"
+    category: "news_dashboards"
+    priority: 2
+
+  - name: "Al Jazeera"
+    url: "https://www.aljazeera.com/xml/rss/all.xml"
+    category: "news_dashboards"
+    priority: 2
+
+settings:
+  timeout: 10
+  max_items_per_feed: 20
+  user_agent: "AI-Signal-Daily/1.0"

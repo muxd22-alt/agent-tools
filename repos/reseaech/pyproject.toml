@@ -1,0 +1,23 @@
+[project]
+name = "autoresearch"
+version = "0.1.0"
+description = "Autonomous pretraining research swarm (ROCm/AMD fork)"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "matplotlib>=3.10.8",
+    "numpy>=2.2.6",
+    "pandas>=2.3.3",
+    "pyarrow>=21.0.0",
+    "requests>=2.32.0",
+    "rustbpe>=0.1.0",
+    "tiktoken>=0.12.0",
+    "typing-extensions>=4.15.0",
+    "fsspec>=2026.2.0",
+    "jinja2>=3.1.6",
+    "networkx>=3.4.2",
+    "sympy>=1.13.1",
+    # "torch", # Installed via script to avoid uv sync issues with local AMD wheels
+    # "rocm-sdk-core",
+    # "rocm-sdk-libraries-custom"
+]

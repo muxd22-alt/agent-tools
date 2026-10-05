@@ -1,0 +1,157 @@
+# Getting started with newsjack
+
+This is the front door. If you are an agent that just had newsjack installed (or
+had this repo handed to you), read this first and follow it before doing anything
+else.
+
+## Runtime modes
+
+Newsjack is optimized for local-first agent harnesses. Full Mode needs shell
+execution, filesystem storage, credentials, durable client profiles, JSON
+artifacts, scheduled workflows, multi-agent orchestration, and cost-optimized
+worker passes.
+
+Use **Full Mode** in:
+
+- Claude Code
+- Codex
+- OpenClaw
+- Hermes
+
+Use **Limited Mode** in browser or restricted chat environments:
+
+- Claude.ai chat
+- ChatGPT chat
+- Claude Cowork
+
+Limited Mode can do strategy, newsworthiness checks,
+angles, pitch critique, journalist-fit reasoning, fact-checking from pasted or
+searchable evidence, and best-effort manual news scans. It cannot run the
+canonical detector, save monitors, schedule runs, keep seen-state, write local
+artifacts, or use cost-optimized multi-agent passes.
+
+## Install paths
+
+Default Full Mode install:
+
+```bash
+curl -fsSL newsjack.sh | bash
+```
+
+Use npm only in a Full Mode harness when shell installers or GitHub Release
+assets are blocked:
+
+```bash
+npm i -g newsjack
+newsjack install
+```
+
+On Windows there is no `curl | bash`. When the user is on Windows, download and
+run the setup binary instead (requires v0.1.10 or later):
+
+```powershell
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; iwr https://github.com/elvisun/newsjack/releases/latest/download/newsjack_windows_amd64.exe -OutFile newsjack.exe; Unblock-File newsjack.exe; .\newsjack.exe setup
+```
+
+`newsjack setup` fetches the skills bundle, verifies its checksum, installs the
+CLI to `%USERPROFILE%\.newsjack\bin`, and runs the same guided setup as
+macOS/Linux — including installing Claude Code via its native Windows installer
+if it is missing.
+
+Skill instructions assume the command is available as `newsjack` only in Full
+Mode. In Limited Mode, do not try to install the CLI inside chat; use the
+Limited Mode workflow and label detector-style output as reduced coverage.
+
+## For the agent: start slow
+
+On first contact, **do not** dump the full skill list, and **do not**
+announce missing API keys. Newsjack works without any keys; credentials are
+optional upgrades covered below.
+
+Instead, find out what the user is trying to do and take **one** concrete step.
+Open with a short orientation and offer a few real starting points — not the whole
+menu:
+
+> Newsjack turns me into your PR operator. I can run Full Mode in Claude Code,
+> Codex, OpenClaw, or Hermes, or Limited Mode in browser chat. Where do you want
+> to start?
+>
+> 1. **See what newsjack can do** — a quick tour of the workflow
+> 2. **Get a PR strategy** — figure out audience, positioning, and news pegs first
+> 3. **Check if something's newsworthy** — score a news event or your own pitch idea before you act
+> 4. **Set up monitoring** — watch your industry and competitors for stories to jump on
+> 5. **Track coverage** — Google Alerts-style keyword alerts filtered for real features
+> 6. **Find journalists** — build a small, fit-checked media list for a pitch
+> 7. **Build an AI-visibility prompt panel** — research a URL and map the buyer prompts worth tracking
+
+Then let the user pick and go one step at a time. Each starting point maps to a
+skill:
+
+| Starting point | Skill |
+| --- | --- |
+| See what newsjack can do | (brief tour — only expand the full skill list if asked) |
+| Get a PR strategy | `pr-strategist` |
+| Check if something's newsworthy | `newsworthiness-check` |
+| Set up monitoring | `newsjack-monitor-setup` |
+| Track coverage | `coverage-tracker-setup` |
+| Find journalists | `find-journalists` |
+| Build an AI-visibility prompt panel | `build-ai-visibility-panel` |
+
+If the user already knows what they want ("draft a pitch", "is this newsworthy?",
+"roast this"), skip the menu and route straight to the relevant skill.
+
+## Dependencies — what they unlock, and what they cost
+
+**You can do real work with none of these.** Newsjack's base workflow — strategy,
+angles, fit-checks, drafts, voice, newsworthiness, and a local journalist-list artifact
+— needs no signup and no keys. The optional integrations below add reach; treat a
+missing one as reduced coverage, not a blocker, and never lead with a missing-key
+complaint.
+
+| Dependency | Unlocks | Without it | Cost |
+| --- | --- | --- | --- |
+| **Medialyst login** | live news search plus progressively enriched media-list research for a campaign | news search falls back to host web/browser search; journalist lists become best-effort local artifacts with no guessed contacts | 300 free credits on signup; media-list research uses normal Medialyst credits after explicit approval — [medialyst.ai/agents#pricing](https://medialyst.ai/agents#pricing) |
+| **X bearer token** | the X/Twitter trend source inside monitoring | that source is simply omitted; RSS and news still run | pay-as-you-go, no free tier — [X API pricing](https://docs.x.com/x-api) |
+| **Slack incoming webhook** | optional delivery of finished saved-monitor reports to a chosen channel | reports stay in the agent chat and local run folder | no Newsjack or Medialyst credits; Slack plan rules apply — [Slack webhook guide](https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/) |
+
+### Why Medialyst for news search
+
+General web search is bad at news: it ranks for SEO over recency, paywalls or
+buries primary coverage, and rarely exposes a reliable publication timestamp.
+Medialyst is purpose-built for news and returns the outlet, author, `published_at`,
+and canonical URL that downstream skills (`coverage-tracker`,
+`story-origin-check`, `newsworthiness-check`, `find-journalists`,
+`newsjack-detector`) depend on. The
+`news-search` skill prefers it and falls back to host search — flagging reduced
+freshness confidence — when it is not configured. It is optional cloud substrate,
+not a signup wall.
+
+## Setting up credentials (only when the user wants the upgrade)
+
+- **Medialyst:** prefer `newsjack login` for interactive setup. The command
+  prints a Medialyst approval link, opens it in the browser when possible, and
+  stores OAuth credentials in `~/.newsjack/credentials.json`. Tell the user to
+  open the link and approve `newsjack CLI`; do not ask non-technical users to
+  paste API keys.
+  API keys still work for CI and power users through `MEDIALYST_API_KEY` or
+  `newsjack auth set-medialyst --key <mlst_...>`. The CLI calls the Medialyst
+  public REST API directly for news search, journalist enrichment, and
+  asynchronous media-list research. The agent must get explicit
+  approval for the exact campaign prompt and calculated research target before
+  starting a credit-bearing list job, then poll and show normalized rows
+  incrementally. For N requested good fits, the skill normally recommends a
+  5x research target and may increase toward 10x for a highly constrained brief;
+  the CLI never applies that multiplier silently.
+  Default scopes: `news:search media_lists:manage`.
+- **X:** set `X_BEARER_TOKEN` (alias `TWITTER_BEARER_TOKEN`). Newsjack calls the X
+  API directly.
+- **Slack:** configure this only while setting up a saved monitor. The
+  `newsjack-monitor-setup` skill defaults to every completed scan while the
+  alerts are being tuned; users can choose pitch-ready-only delivery or no
+  Slack instead. Create a webhook using
+  Slack's [incoming webhook guide](https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/),
+  then enter it directly into `newsjack monitor delivery set-slack <slug>`'s
+  hidden prompt — never paste it into agent chat or put it in a command
+  argument. Newsjack keeps it out of the public profile and report artifacts.
+
+Only bring these up when the user reaches a step that benefits from them.

@@ -1,0 +1,29 @@
+#!/bin/sh
+set -eu
+
+NEWSJACK_HOME="${NEWSJACK_HOME:-$HOME/.newsjack}"
+
+die() {
+  printf '%s\n' "newsjack: error: $*" >&2
+  exit 1
+}
+
+if [ "${NEWSJACK_USE_INSTALLED:-0}" = "1" ] && [ -x "$NEWSJACK_HOME/bin/newsjack" ]; then
+  exec "$NEWSJACK_HOME/bin/newsjack" "$@"
+fi
+
+if [ "${NEWSJACK_ROOT:-}" ]; then
+  root=$NEWSJACK_ROOT
+else
+  script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+  root=$(CDPATH= cd -- "$script_dir/.." && pwd)
+fi
+
+[ -d "$root/apps/cli" ] || die "missing Go CLI source at $root/apps/cli"
+command -v go >/dev/null 2>&1 || die "Go is required to run the source checkout CLI"
+
+NEWSJACK_WORKDIR="${NEWSJACK_WORKDIR:-$(pwd)}"
+export NEWSJACK_WORKDIR
+
+cd "$root/apps/cli"
+exec go run ./cmd/newsjack "$@"
