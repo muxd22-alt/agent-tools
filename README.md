@@ -28,3 +28,7 @@ shared workflow set in `.github/workflows/`:
 
 See `SOURCE_MAP.md` for the old-repo -> new-path mapping, including files
 kept under `repos/<x>/_variants/` (conflicting versions from absorbed repos).
+
+## Dashboard
+
+Live combined dashboard: **[https://muxd22-alt.github.io](https://muxd22-alt.github.io)** (aggregates this monorepo with the other dashboards-type monorepos).
